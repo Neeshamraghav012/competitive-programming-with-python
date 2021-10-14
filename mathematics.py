@@ -9,43 +9,8 @@ from heapq import heappop, heappush, heapify
 
 mod = 1000000007
 INT_MAX = sys.maxsize;
-######## precision ##########################################################################################
-
-# round(ans, 6) -> ans = input, 6 -> number of digits to be rounded.
-
-########## 2D Matrix #########################################################################################
-
-Matrix = [[0 for in range(n)] for j in range(m)]
-
-########### Prefix and Suffix ################################################################################
-
-pref = [sum(test_list[ : i + 1]) for i in range(len(test_list))]
-test_list = [3, 4, 1, 7, 9, 1]
-
-test_list.reverse()
-suff = [sum(test_list[ : i + 1 ]) for i in range(len(test_list))]
-
-###### Fibbonacci Sequence Variables #########################################################################
-MAX = 10**6
-f = [0] * MAX
-
-###### MAP ####################################################################################################
-d = defaultdict(int)
-L = [1, 2, 3, 4, 2, 4, 1, 2]
-    
-for i in L:
-    d[i] += 1
 
 
-###### GroupBy #################################################################################################
-key_func = lambda x: x[0]
-for key, group in itertools.groupby(L, key_func):
-    print(key + " :", list(group))
-
-
-###### SubStrings #################### Total Sub = n * (n + 1) / 2 ##############################################
-sub = [string[x:y] for x, y in combinations(range(len(string) + 1), r = 2)]
-   
 
 ###### Excecution Time ########################################################################################## 
 """"
@@ -61,28 +26,25 @@ factorial(10**5)
 print('Elapsed time :', time() - t0 )
 """
 
+###### Factors of a number N (e.g. 6 -> [(2 * 3), (6 * 1)])
+def factors(n):
+
+    res = []
+
+    for i in range(1, int(sqrt(n)) + 1):
+        if (n % i) == 0:
+
+            if n // i == i:
+                res.append(i)
+            else:
+                res.append(i, n//i)
+
+    return res
+
+### N is prime or not ################################################
 def is_prime(n):
     return n > 1 and all(n % d for d in range(2, int(sqrt(n)) + 1))
 
-####### Eular Totioent Function (all the primes form (1 -> n)) ####################################################
-def phi(n) :
- 
-    result = n  
-    p = 2
-    while p * p<= n :
-
-        if n % p == 0 :
-
-            while n % p == 0 :
-                n = n // p
-            result = result * (1.0 - (1.0 / float(p)))
-        p = p + 1
-         
-  
-    if n > 1 :
-        result = result * (1.0 - (1.0 / float(n)))
-  
-    return int(result)
 
 
 ###### Mod Inverse ################################################################################################
@@ -173,48 +135,6 @@ def fib(n) :
     return f[n]
 
 
-######### Factorial of a large Number #############################################################################
-def multiply(x, res, res_size):
-
-    carry = 0
-
-    for i in range(res_size):
-
-        prod = res[i] * i + carry
-
-        res[i] = prod % 10
-
-        carry = prod // 10
-
-    while (carry):
-
-        res[res_size] = carry % 10
-
-        carry = carry // 10
-        res_size = res_size + 1
-         
-    return res_size
-
-
-def fact(n):
-
-    res = [0] * 500
-
-    res[0] = 1
-
-    res_size = 1
-
-    for i in range(2, n):
-
-        multiply(i, res, res_size)
-
-    print ("Factorial of given number is")
-    i = res_size-1
-    while i >= 0 :
-        sys.stdout.write(str(res[i]))
-        sys.stdout.flush()
-        i = i - 1
-
 
 
 ######## Sieve #####################################################################################################
@@ -297,6 +217,26 @@ def getFactorization(x):
         x = x // spf[x]
  
     return ret
+
+####### Eular Totioent Function (all the primes form (1 -> n)) ####################################################
+def phi(n) :
+ 
+    result = n  
+    p = 2
+    while p * p<= n :
+
+        if n % p == 0 :
+
+            while n % p == 0 :
+                n = n // p
+            result = result * (1.0 - (1.0 / float(p)))
+        p = p + 1
+         
+  
+    if n > 1 :
+        result = result * (1.0 - (1.0 / float(n)))
+  
+    return int(result)
 
 
 ############## Function to print the number  O(n) solution #####################################################################
