@@ -44,3 +44,14 @@ for key, group in itertools.groupby(L, key_func):
 
 ###### SubStrings #################### Total Substrings = n * (n + 1) / 2 #######################################
 sub = [string[x:y] for x, y in combinations(range(len(string) + 1), r = 2)]
+
+if __name__ == "__main__" :
+
+	print("Hello World!")
+
+"""
+
+    Contributed By Neesham
+
+
+"""

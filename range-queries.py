@@ -4,19 +4,6 @@ from collections import Counter, defaultdict, OrderedDict, deque
 from itertools import combinations, groupby
 from heapq import heappop, heappush, heapify
 
-d = defaultdict(int)
-    
-L = [1, 2, 3, 4, 2, 4, 1, 2]
-    
-###### first element of a dict ###########################################################
-res = next(iter(test_dict))
-for i in L:
-    d[i] += 1
-
-key_func = lambda x: x[0]
-  
-for key, group in itertools.groupby(L, key_func):
-    print(key + " :", list(group))
 
 ### Segmented Tree (0- based index) [l, r) ######
 N = 100000;
@@ -204,3 +191,15 @@ def squarRootQuery(l, r, block, block_size, a, n):
             i += 1
 
     return s
+
+
+if __name__ == "__main__" :
+
+    print("Hello World!")
+
+"""
+
+    Contributed By Neesham
+
+
+"""
