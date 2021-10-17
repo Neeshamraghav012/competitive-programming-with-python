@@ -16,7 +16,7 @@ INT_MAX = sys.maxsize;
 """"
 def factorial(n):
     num = 1
-    while n >= 1:
+    while n >= 1:              
         num = num * n
         n = n - 1                   # 👈 this can be any funcion
     return num
@@ -26,7 +26,7 @@ factorial(10**5)
 print('Elapsed time :', time() - t0 )
 """
 
-###### Factors of a number N (e.g. 6 -> [(2 * 3), (6 * 1)])
+###### Factors of a number N (e.g. 6 -> [(2 * 3), (6 * 1)]) 🤩
 def factors(n):
 
     res = []
