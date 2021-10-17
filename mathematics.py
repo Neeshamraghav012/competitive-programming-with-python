@@ -18,7 +18,7 @@ def factorial(n):
     num = 1
     while n >= 1:
         num = num * n
-        n = n - 1
+        n = n - 1                   # 👈 this can be any funcion
     return num
 
 t0 = time()
