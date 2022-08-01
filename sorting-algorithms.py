@@ -45,8 +45,45 @@ def insertionSort(arr, n):
     return arr;
 
 # Merge Sort
+c = [0] * 4
 def mergeSort(arr, n):
-    pass
+    
+    if len(arr) <= 1:
+        return 0
 
-arr = insertionSort(arr, n)
+    mid = n // 2 
+
+    l = arr[:mid]
+    r = arr[mid:]
+
+    mergeSort(l, len(l))
+    mergeSort(r, len(r))
+
+    i, j, k = 0, 0, 0 
+
+    while (i < len(l) and j < len(r)):
+
+        if l[i] <= r[j]:
+            arr[k] = l[i]
+            i += 1 
+
+        else:
+            arr[k] = r[j]
+            j += 1
+
+        k += 1
+
+    while (i < len(l)):
+        arr[k] = l[i]
+        k += 1 
+        i += 1
+
+    while (j < len(r)):
+        arr[k] = r[j]
+        k += 1
+        j += 1
+
+    return arr;
+
+arr = mergeSort(arr, n)
 print(arr)
