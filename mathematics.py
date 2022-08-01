@@ -6,11 +6,10 @@ from itertools import combinations, groupby
 from time import time
 from heapq import heappop, heappush, heapify
 
-
 mod = 1000000007
 INT_MAX = sys.maxsize;
 
-
+N = 100000;
 
 ###### Excecution Time ########################################################################################## 
 """"
@@ -37,7 +36,7 @@ def factors(n):
             if n // i == i:
                 res.append(i)
             else:
-                res.append(i, n//i)
+                res.append((i, n//i))
 
     return res
 
@@ -108,6 +107,7 @@ def fermat(a):
 
 ######## A number is Fibonacci if and only if one or both of (5*n2 + 4) or (5*n2 – 4) is a perfect square ######
 ######## Returns n'th fibonacci number using table f[] #########################################################
+f = [0] * N
 def fib(n) :
     # Base cases
     if (n == 0) :
@@ -138,6 +138,7 @@ def fib(n) :
 
 
 ######## Sieve #####################################################################################################
+"""
 def sieveOfEratosthenes(N):
 
     prime = [1 for i in range(N + 1)]	
@@ -162,6 +163,9 @@ def sieveOfEratosthenes(N):
     return a
 
 """
+
+
+"""
 x = sieveOfEratosthenes(10)
 for i in x:
     print(x)
@@ -180,31 +184,31 @@ def primeFactors(n):
             
             n //= i 
             
-    if n > 2: 
+    if n > 1: 
         res.append(n)
         
     return res
 
 
 ########### Prime Factors of a number using preprocessing ##########################################################
-spf = [0] * MAXN
+spf = [0] * N
 
 def sieve():
     spf[1] = 1
-    for i in range(2, MAXN):
+    for i in range(2, N):
 
         spf[i] = i
  
 
-    for i in range(4, MAXN, 2):
+    for i in range(4, N, 2):
         spf[i] = 2
  
-    for i in range(3, mt.ceil(mt.sqrt(MAXN))):
+    for i in range(3, ceil(sqrt(N))):
          
 
         if (spf[i] == i):
 
-            for j in range(i * i, MAXN, i):
+            for j in range(i * i, N, i):
 
                 if (spf[j] == j):
                     spf[j] = i
@@ -279,6 +283,53 @@ def findTotalDivisors():
 
 #findTotalDivisors()
 
+fact = [0] * 10
+
+fact[0] = 1
+
+for i in range(1, 10):
+
+    fact[i] = i * fact[i - 1]
+
+
+def total_divisors(n):
+
+    div = {}
+
+    for i in range(2, n + 1):
+
+        for j in range(i, n + 1, i):
+
+            if j in div.keys():
+                div[j].append(i)
+
+            else:
+                div[j] = [i]
+
+    return div
+
+"""
+div = total_divisors(10)
+for key, val in div.items():
+    print(key, val)
+"""
+
+###### Binomial Coefficient #########################
+
+def binomial_coefficient(n, m):
+    res = 1
+ 
+    if m > n - m:
+        m = n - m
+ 
+    for i in range(0, m):
+        res *= (n - i)
+        res /= (i + 1)
+ 
+    return int(res)
+
+#print(binomial_coefficient(5, 3))
+
 if __name__ == "__main__" :
 
     print("Hello World!")
@@ -289,3 +340,14 @@ if __name__ == "__main__" :
 
 
 """
+
+def solve(arr):
+
+    nList = set(arr)
+
+    mex = 0
+
+    while mex in nList:
+      mex += 1
+
+    return mex
